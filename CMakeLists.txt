@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.4.1)
 project(quickjs LANGUAGES C)
 
+# Set quickjs version.
+file(STRINGS VERSION QUICKJS_VERSION)
+
 # C standard requirements.
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
@@ -34,7 +37,7 @@ set(SOURCE_FILES
 # Create target.
 add_library(${PROJECT_NAME} STATIC ${SOURCE_FILES})
 target_compile_definitions(${PROJECT_NAME} PRIVATE
-    CONFIG_VERSION="2023-12-09"
+    CONFIG_VERSION="${QUICKJS_VERSION}"
     CONFIG_BIGNUM
     _GNU_SOURCE
     )
