@@ -11,31 +11,17 @@ set(CMAKE_C_EXTENSIONS ON)
 
 # Add source files.
 set(SOURCE_FILES
-    cutils.h
     cutils.c
-
     libbf.c
-    libbf.h
-
-    libregexp.h
-    libregexp-opcode.h
     libregexp.c
-
-    libunicode.h
-    libunicode-table.h
     libunicode.c
-
-    quickjs.h
-    quickjs-atom.h
-    quickjs-opcode.h
     quickjs.c
-
-    quickjs-libc.h
     quickjs-libc.c
     )
 
 # Create target.
 add_library(${PROJECT_NAME} STATIC ${SOURCE_FILES})
+target_include_directories(${PROJECT_NAME} PUBLIC .)
 target_compile_definitions(${PROJECT_NAME} PRIVATE
     CONFIG_VERSION="${QUICKJS_VERSION}"
     CONFIG_BIGNUM
